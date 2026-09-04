@@ -4,13 +4,12 @@ import { initData } from "./data.js";
 import { processFormData } from "./lib/utils.js";
 
 import { initTable } from "./components/table.js";
-// @todo: подключение
+
 import { initPagination } from "./components/pagination.js";
 import { initSorting } from "./components/sorting.js";
 import { initFiltering } from "./components/filtering.js";
 import { initSearching } from "./components/searching.js";
 
-// Исходные данные используемые в render()
 const api = initData(sourceData);
 
 /**
@@ -34,14 +33,10 @@ function collectState() {
  * @param {HTMLButtonElement?} action
  */
 async function render(action) {
-  let state = collectState(); // состояние полей из таблицы
+  let state = collectState();
 
-  let query = {}; // копируем для последующего изменения
-  // @todo: использование
-  // result = applySearching(result, state, action);
-  // result = applyFiltering(result, state, action);
-  // result = applySorting(result, state, action);
-  // result = applyPagination(result, state, action);
+  let query = {};
+
   query = applySearching(query, state, action);
   query = applySorting(query, state, action);
   query = applyFiltering(query, state, action);
@@ -62,7 +57,6 @@ const sampleTable = initTable(
   render,
 );
 
-// @todo: инициализация
 const applySearching = initSearching("search");
 
 const { applyPagination, updatePagination } = initPagination(
